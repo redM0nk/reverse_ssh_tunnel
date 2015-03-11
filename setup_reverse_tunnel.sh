@@ -11,10 +11,9 @@ echo "Installing openssh-server and autossh"
 apt-get install openssh-server autossh
 echo "Randomly creating port numbers (edit these in the file to change if you want)"
 
-PORT_NUMBER=$[ ( $RANDOM % 10000 )  + 10000 ]
-MONITORING_PORT_NUMBER=$[ ( $RANDOM % 10000 )  + 20000 ]
-
+read PORT_NUMBER
 echo "PORT_NUMBER: ${PORT_NUMBER}"
+read MONITORING_PORT_NUMBER
 echo "MONITORING_PORT_NUMBER: ${MONITORING_PORT_NUMBER}"
 echo "Enter servername or IP address for the middleman server"
 read MIDDLEMAN_SERVER
