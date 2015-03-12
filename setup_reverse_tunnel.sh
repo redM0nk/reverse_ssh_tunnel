@@ -9,8 +9,10 @@ SCRIPT_LOCATION="/etc/network/if-up.d/reverse_ssh_tunnel"
 echo "Creating file in $SCRIPT_LOCATION"
 echo "Installing openssh-server and autossh"
 apt-get install openssh-server autossh
-echo "Randomly creating port numbers (edit these in the file to change if you want)"
-
+echo "Select the port to forward to a remote port. Port 22 for ssh or port 3306 for MySQL"
+read PORT_TO_FORWARD
+echo "PORT_TO_FORWARD: ${PORT_TO_FORWARD}"
+echo "Select port to forward to on remote host"
 read PORT_NUMBER
 echo "PORT_NUMBER: ${PORT_NUMBER}"
 read MONITORING_PORT_NUMBER
@@ -44,6 +46,8 @@ echo "#!/bin/sh
 # When this script runs it will allow you to ssh into this machine even if it is behind a firewall or has a NAT'd IP address. 
 # From any ssh capable machine you just type ssh -p $PORT_NUMBER $SUDO_USER@$MIDDLEMAN_SERVER
 
+# Port to forward to the remote host
+PORT_FORWARDED = $PORT_TO_FORWARD
 # This is the username on your local server who has public key authentication setup at the middleman
 USER_TO_SSH_IN_AS=$MIDDLEMAN_USERNAME
 
@@ -58,7 +62,7 @@ AUTOSSH_PORT=$MONITORING_PORT_NUMBER
 
 # Ensures that autossh keeps trying to connect
 AUTOSSH_GATETIME=0
-su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON}:localhost:22 \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
+su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON}:localhost:\${PORT_FORWARDED} \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
 " > $SCRIPT_LOCATION
 
 echo "Making script executable"
