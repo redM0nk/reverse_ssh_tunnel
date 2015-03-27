@@ -15,6 +15,7 @@ echo "PORT_TO_FORWARD: ${PORT_TO_FORWARD}"
 echo "Select port to forward to on remote host"
 read PORT_NUMBER
 echo "PORT_NUMBER: ${PORT_NUMBER}"
+echo "Enter Monitoring port number:"
 read MONITORING_PORT_NUMBER
 echo "MONITORING_PORT_NUMBER: ${MONITORING_PORT_NUMBER}"
 echo "Enter servername or IP address for the middleman server"
