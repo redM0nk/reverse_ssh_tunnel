@@ -4,7 +4,7 @@ if [ -z "$SUDO_USER" ]; then
     exit 1
 fi
 
-SCRIPT_LOCATION="/etc/network/if-up.d/reverse_ssh_tunnel"
+SCRIPT_LOCATION="/etc/network/if-up.d/rst"
 
 echo "Creating file in $SCRIPT_LOCATION"
 echo "Installing openssh-server and autossh"
