@@ -10,12 +10,18 @@ sudo ./setup_reverse_tunnel.sh
 
 Why to use this:
 
-You Want to forward a port from some device somewhere, whether it's behind a firewall or not, to make it accesable on a given computer all the time.
+You Want to forward a port from some device somewhere, whether it's behind a firewall or not, to make it accessable on a given computer all the time.
 
-I have just added the ability to select which port can be forwarded etc.
+EDIT:
+I forked this so I could add the ability to select which port gets forwarded.
+This script is not mine, and I take no resposiblity for it.
+
+Note: This works great for some quick hacking or testing, but not usually for a long term solution. If you can you should look at setting up openvpn, there are some great guides, and if you can handle this script, you probably have the know how to configure  OpenVPN.
 
 More information about how this works can be found here:
 
 http://www.vdomck.org/2005/11/reversing-ssh-connection.html
 and
 http://www.vdomck.org/2009/11/ssh-all-time.html
+
+
