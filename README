@@ -16,7 +16,7 @@ EDIT:
 I forked this so I could add the ability to select which port gets forwarded.
 This script is not mine, and I take no resposiblity for it.
 
-Note: This works great for some quick hacking or testing, but not usually for a long term solution. If you can you should look at setting up openvpn, there are some great guides, and if you can handle this script, you probably have the know how to configure  OpenVPN.
+Note: This works great for some quick hacking or testing, but not usually for a long term solution. If you can you should look at setting up openvpn. There are some great guides a quick google search away, besides if you can handle this script, you probably have the know how to configureOpenVPN.
 
 More information about how this works can be found here:
 
