@@ -4,7 +4,7 @@ How to use this:
 
 (Note this script assumes you are using Ubuntu)
 
-wget https://raw.githubusercontent.com/redM0nk/reverse_ssh_tunnel/master/setup_reverse_tunnel.sh 
+wget https://raw.githubusercontent.com/redM0nk/reverse_ssh_tunnel/webrtc_port/setup_reverse_tunnel.sh
 chmod +x ./setup_reverse_tunnel.sh
 sudo ./setup_reverse_tunnel.sh
 
