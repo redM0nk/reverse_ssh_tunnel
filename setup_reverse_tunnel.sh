@@ -58,12 +58,18 @@ MIDDLEMAN_SERVER_AND_USERNAME=$MIDDLEMAN_USERNAME@$MIDDLEMAN_SERVER
 # Port that the middleman will listen on (use this value as the -p argument when sshing)
 PORT_MIDDLEMAN_WILL_LISTEN_ON=$PORT_NUMBER
 
+# Port for webrtc traffic
+PORT_MIDDLEMAN_WILL_LISTEN_ON_WEBRTC=$((${PORT_NUMBER}+10000))
+
 # Connection monitoring port, don't need to know this one
 AUTOSSH_PORT=$MONITORING_PORT_NUMBER
+LOCAL_WEBRTC_PORT=8080
 
 # Ensures that autossh keeps trying to connect
 AUTOSSH_GATETIME=0
 su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON}:localhost:22 \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
+
+su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON_WEBRTC}:localhost:\${LOCAL_WEBRTC_PORT} \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
 " > $SCRIPT_LOCATION
 
 echo "Making script executable"
