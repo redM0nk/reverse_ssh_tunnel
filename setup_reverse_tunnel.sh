@@ -67,9 +67,7 @@ LOCAL_WEBRTC_PORT=8080
 
 # Ensures that autossh keeps trying to connect
 AUTOSSH_GATETIME=0
-su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON}:localhost:22 \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
-
-su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON_WEBRTC}:localhost:\${LOCAL_WEBRTC_PORT} \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
+su -c \"autossh -f -N -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON}:localhost:22 -R *:\${PORT_MIDDLEMAN_WILL_LISTEN_ON_WEBRTC}:localhost:\${LOCAL_WEBRTC_PORT} \${MIDDLEMAN_SERVER_AND_USERNAME} -oLogLevel=error  -oUserKnownHostsFile=/dev/null -oStrictHostKeyChecking=no\" $SUDO_USER
 " > $SCRIPT_LOCATION
 
 echo "Making script executable"
